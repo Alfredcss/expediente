@@ -15,19 +15,28 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <div class="login-box">
         <h2>Login</h2>
-        <img src="/img/logo.png" width="350" height="100" alt="Logo Centro Medico COSCAMI" class="login-image">
+        <img src="/img/logo.png" alt="Logo Centro Medico COSCAMI" class="login-image">
         <form id="login-form">
             <div class="user-box">
-                <i class="fas fa-envelope"></i> <!-- Icono para el campo de email -->
                 <input type="email" id="email" name="email" placeholder="Em@il" required>
+                <i class="fas fa-envelope"></i>
             </div>
             <div class="user-box">
-                <i class="fas fa-lock"></i> <!-- Icono para el campo de contraseña -->
                 <input class="placeholder" type="password" id="password" name="password" placeholder="Password" required>
-                 <!-- Icono para mostrar/ocultar contraseña -->
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="user-box">
+                
+                <i class="fas fa-user-tag"></i>
             </div>
             <div>
-                <button type="submit" id="signin-btn">Iniciar sesión</button>
+                <button type="submit" id="signin-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Iniciar sesión
+                </button>
             </div>
         </form>
     </div>

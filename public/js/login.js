@@ -1,4 +1,4 @@
-import { ManageAccount } from './firebaseconect.js';
+/*import { ManageAccount } from './firebaseconect.js';
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("login-form").addEventListener("submit", function(event) {
@@ -44,3 +44,4 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
 });
 
+*/

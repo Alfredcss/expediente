@@ -1,28 +1,49 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 4000;
 
-// Set the static files directory
+// Servir archivos estáticos desde el directorio 'public'
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Route for the main page (login)
+// Rutas para las páginas HTML en la carpeta 'public/html'
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/html/index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Route for the home page
-app.get('/home', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/html/home.html'));
+app.get('/admin-dashboard.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/html/admin-dashboard.html'));
 });
 
-// Handling form submission (basic example)
+app.get('/verpacientes.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/html/verpacientes.html'));
+});
+
+app.get('/editarpaciente.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/html/editarpaciente.html'));
+});
+
+app.get('/med-verpacientes.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/html/med-verpacientes.html'));
+});
+
+app.get('/agregarpaciente.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/html/agregarpaciente.html'));
+});
+
+app.get('/med-agregarpacientes.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/html/med-agregarpacientes.html'));
+});
+
+app.get('/medico-dashboard.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/html/medico-dashboard.html'));
+});
+
 app.post('/login', (req, res) => {
-    // Here you would handle form submission, authenticate the user, etc.
-    // After authenticating, redirect to /home
-    res.redirect('/home');
+    // Aquí manejarías el envío del formulario y la autenticación
+    res.redirect('/admin-dashboard.html');
 });
 
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+    console.log(`Servidor corriendo en http://localhost:${port}`);
 });

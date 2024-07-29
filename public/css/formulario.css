@@ -35,7 +35,11 @@ h2 {
 form {
     display: flex;
     flex-direction: column;
+<<<<<<< HEAD
     gap: 20px;
+=======
+    gap: 10px;
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
 }
 
 /* Estilos de etiquetas y campos de entrada */

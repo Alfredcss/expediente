@@ -46,7 +46,11 @@
                         <select id="genero" name="genero" class="form-control" required>
                             <option value="masculino">Masculino</option>
                             <option value="femenino">Femenino</option>
+<<<<<<< HEAD
                         </select><br><br>
+=======
+                        </select>
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
                     </div>
                     <div class="form-group">
                         <label for="direccion">Dirección:</label>
@@ -60,6 +64,10 @@
                         <label for="grupoetnico">Grupo Étnico:</label>
                         <input type="text" class="form-control" id="grupoetnico" name="grupoetnico">
                     </div>
+<<<<<<< HEAD
+=======
+                  
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
                     <h4>Historia Clínica</h4>
                     <div class="small-break"></div>
                     <div class="form-group">
@@ -168,11 +176,19 @@
                         <label for="evolucion">Evolución:</label>
                         <textarea class="form-control" id="evolucion" name="evolucion"></textarea>
                     </div>
+<<<<<<< HEAD
                   
+=======
+                    <div class="form-group">
+                        <label for="signosvitalesevolucion">Signos Vitales Evolución:</label>
+                        <textarea class="form-control" id="signosvitalesevolucion" name="signosvitalesevolucion"></textarea>
+                    </div>
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
                     <div class="form-group">
                         <label for="resultadosrelevantes">Resultados Relevantes:</label>
                         <textarea class="form-control" id="resultadosrelevantes" name="resultadosrelevantes"></textarea>
                     </div>
+<<<<<<< HEAD
                     
                     <div class="form-group">
                         <label for="tratamientoindicaciones">Tratamiento e Indicaciones Médicas:</label>
@@ -189,6 +205,15 @@
                     <div class="form-group">
                         <label for="sugerenciasdiagnosticas">Sugerencias Diagnosticas:</label>
                         <textarea class="form-control" id="sugerenciasdiagnosticas" name="sugerenciasdiagnosticas"></textarea>
+=======
+                    <div class="form-group">
+                        <label for="diagnosticosprincipales">Diagnósticos Principales:</label>
+                        <textarea class="form-control" id="diagnosticosprincipales" name="diagnosticosprincipales"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="tratamiento">Tratamiento:</label>
+                        <textarea class="form-control" id="tratamiento" name="tratamiento"></textarea>
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
                     </div>
                     <h4>Nota Médica en Urgencias</h4>  
                     <div class="small-break"></div>
@@ -217,11 +242,19 @@
                         <textarea class="form-control" id="tratamientopronostico" name="tratamientopronostico"></textarea>
                     </div>
                     
+<<<<<<< HEAD
                     <h4>Subir Archivos PDF</h4>
                     <div class="small-break"></div>
                     <div class="form-group">
                         <label for="pdfFile">Subir archivos PDF:</label>
                         <input type="file" class="form-control-file" id="pdfFile" name="pdfFile" accept="application/pdf" multiple>
+=======
+                    <h4>Subir Archivo PDF</h4>
+                    <div class="small-break"></div>
+                    <div class="form-group">
+                        <label for="pdfFile">Subir archivo PDF:</label>
+                        <input type="file" class="form-control-file" id="pdfFile" name="pdfFile" accept="application/pdf">
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
                     </div>
                 </div>
             </div>
@@ -234,11 +267,17 @@
     <script type="module" src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns-tz@1.1.6"></script>
     <script type="module">
         // Your web app's Firebase configuration
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
         import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+<<<<<<< HEAD
+=======
+       
+
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
 
         const firebaseConfig = {
             apiKey: "AIzaSyC5FtYUL8Br1yyzjPVob_f5NxH8RGJHQYU",
@@ -254,12 +293,17 @@
         const db = getFirestore(app);
         const storage = getStorage(app);
 
+<<<<<<< HEAD
         const createExpediente = (expedienteData, pdfUrls) => {
             return addDoc(collection(db, 'expediente'), {
                 ...expedienteData,
                 pdfUrls // Almacenar las URLs de los PDFs en un array
             });
         }
+=======
+        
+
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
 
         document.addEventListener('DOMContentLoaded', () => {
             const expedienteForm = document.getElementById('expedienteform');
@@ -274,6 +318,7 @@
                         data[key] = value;
                     }
                 });
+<<<<<<< HEAD
 
                 const pdfFiles = expedienteForm['pdfFile'].files;
                 const pdfUrls = [];
@@ -303,10 +348,43 @@
                         console.error('Error guardando el expediente: ', error);
                         Swal.fire('Hubo un error guardando el expediente', '', 'error');
                     }
+=======
+
+                const pdfFile = expedienteForm['pdfFile'].files[0];
+
+                try {
+                    if (pdfFile) {
+                        const pdfRef = ref(storage, 'pdfs/' + pdfFile.name);
+                        const snapshot = await uploadBytes(pdfRef, pdfFile);
+                        const pdfUrl = await getDownloadURL(snapshot.ref);
+                        await createExpediente(data, pdfUrl);
+                    } else {
+                        await createExpediente(data, null);
+                    }
+                    Swal.fire('Expediente guardado con éxito', '', 'success');
+                    expedienteForm.reset();
+                } catch (error) {
+                    console.error('Error guardando el expediente: ', error);
+                    Swal.fire('Hubo un error guardando el expediente', '', 'error');
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
                 }
             });
         });
     </script>
+    <script type="module">
+        import { zonedTimeToUtc, utcToZonedTime, format } from 'https://cdn.jsdelivr.net/npm/date-fns-tz@1.1.6/dist/date-fns-tz.min.js';
+    
+        // Establecer la fecha actual en el campo de fecha utilizando la zona horaria de la Ciudad de México
+        document.addEventListener('DOMContentLoaded', () => {
+            const fechaRegistro = document.getElementById('fechaRegistro');
+            const timeZone = 'America/Mexico_City';
+            const now = new Date();
+            const zonedDate = utcToZonedTime(now, timeZone);
+            const today = format(zonedDate, 'yyyy-MM-dd', { timeZone });
+            fechaRegistro.value = today;
+        });
+    </script>
+    
     <script type="module">
         import { ManageAccount } from '/js/firebaseconect.js';
 
@@ -319,6 +397,24 @@
             });
         });
     </script>
+<<<<<<< HEAD
+=======
+     <script type="module">
+        document.addEventListener('DOMContentLoaded', () => {
+            // Obtén el rol del usuario desde localStorage
+            const userRole = localStorage.getItem('userRole');
+    
+            // Lista de roles permitidos para acceder a la página
+            const allowedRoles = ['admin', 'doctor', 'enfermero'];
+    
+            // Redirige si el usuario no tiene permisos para acceder a esta página
+            if (!allowedRoles.includes(userRole)) {
+                window.location.href = 'home.html'; // Redirige a una página accesible
+            }
+        });
+    </script>
+    
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
     <script src="/js/scripts.js"></script>
 </body>
 </html>

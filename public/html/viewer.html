@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="stylesheet" href="/css/verpaciente.css">
-<<<<<<< HEAD
-    <link rel="stylesheet" href="/css/navbar.css">
-=======
->>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
     <link rel="stylesheet" type="text/css" href="/css/verpaciente.css">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -20,10 +16,105 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
+<style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #F1F2F2;
+      color: black;
+      padding: 10px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .logo img {
+      width: 150px;
+      height: auto;
+    }
+
+    #nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    #nav a {
+      color: black;
+      text-decoration: none;
+      font-size: 20px;
+      position: relative;
+      padding: 5px 0;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+
+    #nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 50%;
+      bottom: 0;
+      background-color: #33CEFF;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    #nav a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    #logoutButton {
+      background-color: #FF6B6B;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      font-size: 16px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+
+    #logoutButton:hover {
+      background-color: #FF4C4C;
+    }
+
+    /* Estilos para los iconos */
+    .nav-icon {
+      margin-right: 5px;
+    }
+
+    
+  </style>
+<div class="navbar-container">
+    <div class="logo">
+      <a href="#">
+        <img src="/img/logo.png" alt="Centro Medico Coscami">
+      </a>
+    </div>
+    <div id="nav">
+
+     
+      <button type="button" id="logoutButton"><i class="nav-icon fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+      
+    </div>
+  </div>
 <body>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <header></header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4"></nav>
+
     <div class="container my-4">
       <div class="input-group mb-3">
           <input type="text" id="searchInput" class="form-control" placeholder="Buscar paciente por ID, Nombre, Edad, Genero...">
@@ -34,53 +125,15 @@
   </div>
     <div id="pacientes-list"></div>
 
-<!-- Modal de Confirmación de Eliminación -->
-<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="confirmModalLabel">Confirmar Eliminación</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ¿Está seguro de que desea eliminar este expediente?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
   
-    <!-- Modal para mostrar detalles del paciente -->
-    <div class="modal fade" id="detallesModal" tabindex="-1" role="dialog" aria-labelledby="detallesModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="detallesModalLabel">Detalles del Paciente </h5>
-                  
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" id="modal-body-content">
-                    <!-- Contenido dinámico irá aquí -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+   
     
 
     <footer></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="module" src="/js/verpaciente.js"></script>
+    <script type="module" src="/js/viewer.js"></script>
     <script type="module" src="/js/firebaseconect.js"></script>
     <script type="module">
         import { ManageAccount } from '/js/firebaseconect.js';
@@ -97,16 +150,13 @@
         });
     </script>
     <script src="/js/scripts.js"></script>
-<<<<<<< HEAD
-  
-=======
     <script type="module">
       document.addEventListener('DOMContentLoaded', () => {
           // Obtén el rol del usuario desde localStorage
           const userRole = localStorage.getItem('userRole');
   
           // Lista de roles permitidos para acceder a la página
-          const allowedRoles = ['admin', 'doctor', 'enfermero'];
+          const allowedRoles = ['recepcionista'];
   
           // Redirige si el usuario no tiene permisos para acceder a esta página
           if (!allowedRoles.includes(userRole)) {
@@ -114,7 +164,6 @@
           }
       });
   </script>
->>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
   
   
 </body>

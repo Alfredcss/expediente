@@ -64,14 +64,24 @@
 </head>
 <body>
     <div class="container">
+<<<<<<< HEAD
         <div class="form-group">
             <label for="fechaRegistro">Fecha de Registro:</label>
             <input type="date" class="form-control" id="fechaRegistro" name="fechaRegistro" disabled>
         </div>
+=======
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
         <h2>Editar Paciente</h2>
         <form id="editarPacienteForm">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
+<<<<<<< HEAD
+=======
+                    <div class="form-group">
+                        <label for="fechaRegistro">Fecha de Registro:</label>
+                        <input type="date" class="form-control" id="fechaRegistro" name="fechaRegistro" disabled>
+                    </div>
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
                     <h4>Hoja Frontal</h4>
                     <div class="small-break"></div>
                     <div class="form-group">
@@ -221,6 +231,7 @@
                         <textarea class="form-control" id="evolucion" name="evolucion"></textarea>
                     </div>
                     <div class="form-group">
+<<<<<<< HEAD
                         <label for="resultadosrelevantes">Resultados Relevantes:</label>
                         <textarea class="form-control" id="resultadosrelevantes" name="resultadosrelevantes"></textarea>
                     </div>
@@ -240,6 +251,22 @@
                     <div class="form-group">
                         <label for="sugerenciasdiagnosticas">Sugerencias Diagnosticas:</label>
                         <textarea class="form-control" id="sugerenciasdiagnosticas" name="sugerenciasdiagnosticas"></textarea>
+=======
+                        <label for="signosvitalesevolucion">Signos Vitales Evolución:</label>
+                        <input type="text" class="form-control" id="signosvitalesevolucion" name="signosvitalesevolucion">
+                    </div>
+                    <div class="form-group">
+                        <label for="resultadosrelevantes">Resultados Relevantes:</label>
+                        <input type="text" class="form-control" id="resultadosrelevantes" name="resultadosrelevantes">
+                    </div>
+                    <div class="form-group">
+                        <label for="diagnosticosprincipales">Diagnósticos Principales:</label>
+                        <input type="text" class="form-control" id="diagnosticosprincipales" name="diagnosticosprincipales">
+                    </div>
+                    <div class="form-group">
+                        <label for="tratamiento">Tratamiento:</label>
+                        <input type="text" class="form-control" id="tratamiento" name="tratamiento">
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
                     </div>
                     <h4>Nota Médica en Urgencias</h4>  
                     <div class="small-break"></div>
@@ -277,5 +304,22 @@
     </div>
     <script type="module" src="/js/firebaseconect.js"></script>
     <script type="module" src="/js/editarpaciente.js"></script>
+<<<<<<< HEAD
+=======
+    <script type="module">
+        document.addEventListener('DOMContentLoaded', () => {
+            // Obtén el rol del usuario desde localStorage
+            const userRole = localStorage.getItem('userRole');
+    
+            // Lista de roles permitidos para acceder a la página
+            const allowedRoles = ['admin', 'doctor'];
+    
+            // Redirige si el usuario no tiene permisos para acceder a esta página
+            if (!allowedRoles.includes(userRole)) {
+                window.location.href = 'home.html'; // Redirige a una página accesible
+            }
+        });
+    </script>
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
 </body>
 </html>

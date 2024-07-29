@@ -1,0 +1,42 @@
+<div class="container">
+    <h1 class="text-center mb-4">Expediente Clínico</h1>
+    <form id="editarPacienteForm">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h4>Hoja Frontal</h4>
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre">
+                </div>
+                <!-- Otros campos omitidos por brevedad -->
+
+                <h4>Historia Clínica</h4>
+                <div class="form-group">
+                    <label for="antecedentesheredofamiliares">Antecedentes Heredo Familiares:</label>
+                    <textarea class="form-control" id="antecedentesheredofamiliares" name="antecedentesheredofamiliares"></textarea>
+                </div>
+                <!-- Otros campos omitidos por brevedad -->
+            </div>
+
+            <div class="col-md-6">
+                <h4>Estudios y Diagnóstico</h4>
+                <div class="form-group">
+                    <label for="resultadosestudios">Resultados Estudios:</label>
+                    <textarea class="form-control" id="resultadosestudios" name="resultadosestudios"></textarea>
+                </div>
+                <!-- Otros campos omitidos por brevedad -->
+
+                <h4>Nota Médica en Urgencias</h4>
+                <div class="form-group">
+                    <label for="motivoadmision">Motivo de Admisión:</label>
+                    <input type="text" class="form-control" id="motivoadmision" name="motivoadmision">
+                </div>
+                <!-- Otros campos omitidos por brevedad -->
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary btn-lg">Guardar Expediente</button>
+        </div>
+    </form>
+</div>

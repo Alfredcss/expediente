@@ -101,8 +101,11 @@ const mostrarPacientes = (pacientes) => {
       <p><strong>Teléfono:</strong> ${paciente.telefono}</p>
       <p><strong>Grupo Étnico:</strong> ${paciente.grupoetnico}</p>
       <p><strong>ID:</strong> <span class="badge bg-secondary rounded-pill">${paciente.id}</span></p>
+<<<<<<< HEAD
       <p><strong>Fecha de Registro:</strong> ${paciente.fechaRegistro}</p>
   
+=======
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
       <button class="btn btn-link btn-sm ver-detalles-btn" type="button" data-paciente-id="${paciente.id}">Ver detalles</button>
     `;
 
@@ -155,9 +158,15 @@ const mostrarDetallesPaciente = (paciente) => {
       <div class="row">
         <div class="col-md-6">
           <p class="font-weight-bold text-dark">
+<<<<<<< HEAD
         <span class="bg-light text-dark px-3 py-2 rounded-pill fw-semibold text-custom">
   ${paciente.nombre} ${paciente.apellidos}
 </span>
+=======
+            <span class="bg-info text-dark px-1 rounded-pill">
+              ${paciente.nombre} ${paciente.apellidos}
+            </span>
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
           </p>
           <div class="section-title">Historia Clínica</div>
           <div class="section-content">
@@ -219,7 +228,14 @@ const mostrarDetallesPaciente = (paciente) => {
           <div class="section-content">
             <div class="mb-3">
               <p><strong>Evolución y Actualización del Cuadro Clínico:</strong> ${paciente.evolucion}</p>
+<<<<<<< HEAD
               <p><strong>Resultados Relevantes de Estudios:</strong> ${paciente.resultadosrelevantes}</p>
+=======
+              <p><strong>Signos Vitales:</strong> ${paciente.signosvitalesevolucion}</p>
+              <p><strong>Resultados Relevantes de Estudios:</strong> ${paciente.resultadosrelevantes}</p>
+              <p><strong>Diagnósticos o Problemas Clínicos:</strong> ${paciente.diagnosticosevolucion}</p>
+              <p><strong>Pronóstico:</strong> ${paciente.pronosticoevolucion}</p>
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
               <p><strong>Tratamiento e Indicaciones Médicas:</strong> ${paciente.tratamientoindicaciones}</p>
               <p><strong>Criterios Diagnósticos:</strong> ${paciente.criteriosdiagnosticos}</p>
               <p><strong>Plan de Estudios:</strong> ${paciente.planestudios}</p>
@@ -229,7 +245,12 @@ const mostrarDetallesPaciente = (paciente) => {
           <div class="section-title">Nota Médica en Urgencias</div>
           <div class="section-content">
             <div class="mb-3">
+<<<<<<< HEAD
 
+=======
+              <p><strong>Fecha y Hora de Atención:</strong> ${paciente.fechahoraatencion}</p>
+              <p><strong>Signos Vitales:</strong> ${paciente.signosvitalesurgencias}</p>
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
               <p><strong>Motivo de la Atención:</strong> ${paciente.motivoatencion}</p>
               <p><strong>Resumen del Interrogatorio:</strong> ${paciente.resumeninterrogatorio}</p>
               <p><strong>Resultados Relevantes de Estudios:</strong> ${paciente.resultadosrelevantesurgencias}</p>
@@ -265,6 +286,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const searchInput = document.getElementById('searchInput');
 
     const filtrarPacientes = () => {
+<<<<<<< HEAD
       const term = searchInput.value.toLowerCase().trim(); // Normaliza el término de búsqueda
       if (term === '') {
         mostrarPacientes(pacientes); // Si el término de búsqueda está vacío, muestra todos los pacientes
@@ -273,11 +295,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     
       const filteredPacientes = pacientes.filter(paciente => {
         // Normaliza y valida las propiedades del paciente
+=======
+      const term = searchInput.value.toLowerCase();
+      const filteredPacientes = pacientes.filter(paciente => {
+        // Verifica que las propiedades existen antes de usarlas
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
         const nombre = paciente.nombre ? paciente.nombre.toLowerCase() : '';
         const apellidos = paciente.apellidos ? paciente.apellidos.toLowerCase() : '';
         const genero = paciente.genero ? paciente.genero.toLowerCase() : '';
         const edad = paciente.edad ? paciente.edad.toString().toLowerCase() : ''; // Convertir edad a string
         const id = paciente.id ? paciente.id.toLowerCase() : '';
+<<<<<<< HEAD
     
         const nombreCompleto = `${nombre} ${apellidos}`.trim();
     
@@ -285,6 +313,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         return nombre.includes(term) || apellidos.includes(term) || nombreCompleto.includes(term) || genero.includes(term) || edad.includes(term) || id.includes(term);
       });
     
+=======
+        
+        const nombreCompleto = `${nombre} ${apellidos}`.trim();
+        
+        return nombre.includes(term) || apellidos.includes(term) || nombreCompleto.includes(term) || genero.includes(term) || edad.includes(term) || id.includes(term);
+      });
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
       mostrarPacientes(filteredPacientes);
     };
     

@@ -73,8 +73,13 @@ document.addEventListener('DOMContentLoaded', async () => {
              'antecedentesheredofamiliares', 'antecedentespersonales', 'padecimientoactual', 'interrogatorioaparatos', 
              'habitus','peso', 'talla', 'datoscabeza', 'datoscuello', 'datostorax', 'datosabdomen', 
              'datosmiembros', 'datosgenitales', 'resultadosestudios', 'diagnosticos', 'pronostico', 'indicacionterapeutica', 
+<<<<<<< HEAD
 
              'evolucion', 'resultadosrelevantes', 'tratamientoindicaciones', 'criteriosdiagnosticos', 'planestudios', 'sugerenciasdiagnosticas', 
+=======
+             'evolucion', 'signosvitalesevolucion', 'resultadosrelevantes', 'diagnosticosevolucion', 'pronosticoevolucion', 
+             'tratamientoindicaciones', 'criteriosdiagnosticos', 'planestudios', 'sugerenciasdiagnosticas', 'fechahoraatencion', 
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
              'motivoatencion', 'resumeninterrogatorio', 'resultadosrelevantesurgencias', 'diagnosticosurgencias', 
              'tratamientopronostico','FC','TA','FR','T']
             .forEach(id => {

@@ -29,49 +29,9 @@ const getPacientes = async () => {
   }
 };
 
-// Función para eliminar un expediente y sus archivos PDF
-const deletePaciente = async (id) => {
-  try {
-    // Obtener el documento del paciente
-    const pacienteDoc = doc(db, 'expediente', id);
-    const pacienteSnapshot = await getDoc(pacienteDoc);
-    const pacienteData = pacienteSnapshot.data();
 
-    // Eliminar el documento del paciente
-    await deleteDoc(pacienteDoc);
 
-    // Eliminar los archivos PDF vinculados
-    if (pacienteData && pacienteData.pdfUrls) {
-      for (const pdfUrl of pacienteData.pdfUrls) {
-        const pdfRef = ref(storage, pdfUrl);
-        await deleteObject(pdfRef);
-      }
-    }
 
-    console.log('Paciente eliminado con éxito:', id);
-  } catch (error) {
-    console.error('Error eliminando el paciente:', error);
-  }
-};
-
-// Función para mostrar la alerta de confirmación
-const mostrarAlertaEliminar = (pacienteId, pacientes) => {
-  $('#confirmModal').modal('show');
-
-  const confirmButton = document.getElementById('confirmDeleteButton');
-  confirmButton.onclick = async () => {
-    try {
-      await deletePaciente(pacienteId);
-      const updatedPacientes = await getPacientes();
-      mostrarPacientes(updatedPacientes);
-      $('#confirmModal').modal('hide');
-      alert('Paciente eliminado con éxito.');
-    } catch (error) {
-      console.error('Error eliminando paciente:', error);
-      alert('Hubo un problema al eliminar el paciente.');
-    }
-  };
-};
 
 const mostrarPacientes = (pacientes) => {
   const pacientesListElement = document.getElementById('pacientes-list');
@@ -110,7 +70,7 @@ const mostrarPacientes = (pacientes) => {
     notiFooter.classList.add('notifooter'); // Usando una nueva clase para el pie de tarjeta
     notiFooter.innerHTML = `
 
-      <button class="btn btn-outline-primary btn-sm mx-1 editar-btn" data-paciente-id="${paciente.id}">Actualizar</button>
+
     `;
 
     notification.appendChild(notiTitle);

@@ -1,16 +1,30 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+<<<<<<< HEAD
 const port = process.env.PORT || 4000;
 
 // Servir archivos estáticos desde el directorio 'public'
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Rutas para las páginas HTML en la carpeta 'public/html'
+=======
+
+const port = process.env.PORT || 4000;
+
+// Servir archivos estáticos desde el directorio 'public'
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Servir archivos de 'node_modules'
+app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
+
+// Rutas para las páginas HTML
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+<<<<<<< HEAD
 app.get('/admin-dashboard.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/html/admin-dashboard.html'));
 });
@@ -42,6 +56,16 @@ app.get('/medico-dashboard.html', (req, res) => {
 app.post('/login', (req, res) => {
     // Aquí manejarías el envío del formulario y la autenticación
     res.redirect('/admin-dashboard.html');
+=======
+app.get('/home', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/html/home.html'));
+});
+
+
+app.post('/login', (req, res) => {
+    // Aquí manejarías el envío del formulario y la autenticación
+    res.redirect('/home');
+>>>>>>> 8f2c3bf9805f1597219825d164c596b3e11a9a71
 });
 
 app.listen(port, () => {

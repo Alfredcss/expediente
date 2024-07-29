@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/img/logo2.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+
+    <title>Expediente Clínico</title>
+</head>
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <header></header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4"></nav>
+
+    <div class="container">
+        <h1 class="mb-4">Registrar Usuarios</h1>
+        <form id="registerForm" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico:</label>
+                <input type="email" class="form-control" id="email" required>
+                <div class="invalid-feedback">Por favor ingrese un correo válido.</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña:</label>
+                <input type="password" class="form-control" id="password" required>
+                <div class="invalid-feedback">Por favor ingrese una contraseña.</div>
+            </div>
+            <div class="mb-3">
+                <label for="role" class="form-label">Rol:</label>
+                <select class="form-select" id="role" required>
+                    <option value="" disabled selected>Seleccione un rol</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="enfermero">Enfermero</option>
+                    <option value="recepcionista">Recepcionista</option>
+                    <option value="admin">Administrador</option>
+                </select>
+                <div class="invalid-feedback">Por favor seleccione un rol.</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+    <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
+    <footer></footer>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyC5FtYUL8Br1yyzjPVob_f5NxH8RGJHQYU",
+            authDomain: "expediente-1ed23.firebaseapp.com",
+            projectId: "expediente-1ed23",
+            storageBucket: "expediente-1ed23.appspot.com",
+            messagingSenderId: "281693892079",
+            appId: "1:281693892079:web:ce51c550f275e7ff219a1a"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const registerForm = document.getElementById('registerForm');
+
+            registerForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const role = document.getElementById('role').value;
+
+                try {
+                    // Crear el usuario con Firebase Authentication
+                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                    const userId = userCredential.user.uid;
+
+                    // Guardar el rol del usuario en Firestore
+                    await setDoc(doc(db, 'users', userId), {
+                        email: email,
+                        role: role
+                    });
+
+                    Swal.fire('Usuario registrado con éxito', '', 'success');
+                    registerForm.reset();
+                } catch (error) {
+                    console.error('Error registrando usuario: ', error);
+                    Swal.fire('Hubo un error registrando el usuario', '', 'error');
+                }
+            });
+        });
+    </script>
+    <script type="module">
+        document.addEventListener('DOMContentLoaded', () => {
+            // Obtén el rol del usuario desde localStorage
+            const userRole = localStorage.getItem('userRole');
+
+            // Redirige si el usuario no tiene permisos para acceder a esta página
+            if (userRole !== 'admin') { // Puedes agregar más roles si es necesario
+                window.location.href = 'home.html'; // Redirige a una página accesible
+            }
+        });
+    </script>
+ 
+    <script>
+        (function () {
+            'use strict';
+            var forms = document.querySelectorAll('.needs-validation');
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+      <script src="/js/scripts.js"></script>
+</body>
+</html>
